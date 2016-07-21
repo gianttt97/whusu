@@ -1,4 +1,6 @@
 {% for article in article_list %}
     <li>{{ article.title }}</li>
+    <li>{{ article.get_create_date }}</li>
+    <li>{{ article.get_create_month_capital }}</li>
 
 {% endfor %}
