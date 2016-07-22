@@ -1,18 +1,35 @@
-  <h1>headline</h1>
-<ul>{% load humanize %}
-    {% for news in headline_list %}
-        <li>{{ news.title }}-{{ news.author }}-{{ news.content }}-{{ news.create_time|naturaltime }}</li>
-    {% endfor %}
-</ul>
-<h1>spotlight</h1>
-<ul>
-    {% for news in spotlight_list %}
-        <li>{{ news.title }}-{{ news.author }}-{{ news.content }}</li>
-    {% endfor %}
-</ul>
-<h1>school</h1>
-<ul>
-    {% for news in school_list %}
-        <li>{{ news.title }}-{{ news.author }}-{{ news.content }}</li>
-    {%  endfor %}
-</ul>
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>新闻-武汉大学学生会</title>
+</head>
+<body>
+
+{% include 'article/header.html' %}
+
+<div class="wrapper">
+    <div class="headline-wrapper">
+        <ul>
+            {% for news in headline_list %}
+            <li>
+                <img src="{{ news.cover_page_photo_path }}">
+                <div class="headline-text-wrapper">
+                    <h1>{{ news.title }}</h1>
+                    <p>{{ news.introduction }}</p>
+                    <h5>{{ news.kind.name }} | {{ news.create_time|naturaltime }}</h5>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="spot-wrapper">
+
+    </div>
+</div>
+
+{% include 'article/fooetr.html' %}
+
+</body>
+</html>

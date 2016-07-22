@@ -16,12 +16,14 @@ Including another URLconf
 from django.conf.urls import url
 from django.conf.urls import include
 from django.contrib import admin
-from article import views
+from article import views as article_view
+from editor import views as editor_view
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    url(r'^$', article_view.index, name='index'),
     url(r'^admin/', admin.site.urls, name='admin'),
     url(r'^article/', include('article.urls')),
     url(r'^console/', include('console.urls')),
-    url(r'^tt/$', views.test_page),
+    url(r'^login/', editor_view.login, name='login'),
+    url(r'^tt/$', article_view.test_page),
 ]

@@ -1,18 +1,23 @@
 from __future__ import unicode_literals
 from django.db import models
 from random import Random
+from editor.models import Editor
+from editor.models import School
 
 
 class Article(models.Model):
     title = models.CharField(max_length=50)
     subhead = models.CharField(max_length=20)
+    introduction = models.CharField(max_length=100)
     author = models.CharField(max_length=20)
-    editor_id = models.IntegerField()
+    editor = models.ForeignKey('editor.Editor', related_name='editor')
+    publisher = models.ForeignKey('editor.Editor', related_name='publisher')
     create_time = models.DateTimeField()
     last_change_time = models.DateTimeField()
     content = models.TextField()
+    cover_page_photo_path = models.CharField(max_length=100)
     kind = models.ForeignKey('Kind')
-    from_school = models.ForeignKey('School')
+    from_school = models.ForeignKey('editor.School')
     headline = models.BooleanField(default='false')
 
     def get_create_date(self):
@@ -83,9 +88,18 @@ class Kind(models.Model):
     query_id = property(_get_query_id)
 
 
-class School(models.Model):
-    name = models.CharField(max_length=20)
-    department = models.CharField(max_length=20)
-
-    def __unicode__(self):
-        return self.name
+class Event(models.Model):
+    ADD = 'ADD'
+    DELETE = 'DEL'
+    UPDATE = 'UPD'
+    CHECK = 'CHK'
+    KIND_CHOICES = (
+        (ADD, 'Add'),
+        (DELETE, 'Delete'),
+        (UPDATE, 'Update'),
+        (CHECK, 'Check'),
+    )
+    Kind = models.CharField(max_length=3,
+                            choices=KIND_CHOICES)
+    article = models.ForeignKey('Article')
+    user = models.ForeignKey('editor.Editor')

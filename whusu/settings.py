@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'article',
     'console',
+    'editor',
 ]
 
 MIDDLEWARE_CLASSES = [
