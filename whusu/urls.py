@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls, name='admin'),
     url(r'^article/', include('article.urls')),
     url(r'^console/', include('console.urls')),
+    url(r'^tt/$', views.test_page),
 ]

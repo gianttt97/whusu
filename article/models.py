@@ -1,9 +1,9 @@
 from __future__ import unicode_literals
 from django.db import models
+from random import Random
 
 
 class Article(models.Model):
-    """Article model"""
     title = models.CharField(max_length=50)
     subhead = models.CharField(max_length=20)
     author = models.CharField(max_length=20)
@@ -12,10 +12,10 @@ class Article(models.Model):
     last_change_time = models.DateTimeField()
     content = models.TextField()
     kind = models.ForeignKey('Kind')
-    headline = models.BooleanField()
+    from_school = models.ForeignKey('School')
+    headline = models.BooleanField(default='false')
 
     def get_create_date(self):
-        """get date like 2016-01-01"""
         return '%s-%s-%s' % (self.create_time.year,
                              self.create_time.month,
                              self.create_time.day)
@@ -53,12 +53,34 @@ class Article(models.Model):
     def __unicode__(self):
         return self.title
 
+    def _get_query_id(self):
+        query_str = ''
+        chars = '0123456789'
+        length = len(chars) - 1
+        random = Random()
+        for i in range(6):
+            query_str += chars[random.randint(0, length)]
+        return query_str
+
+    query_id = property(_get_query_id)
+
 
 class Kind(models.Model):
     name = models.CharField(max_length=20)
 
     def __unicode__(self):
         return self.name
+
+    def _get_query_id(self):
+        query_str = ''
+        chars = '0123456789'
+        length = len(chars) - 1
+        random = Random()
+        for i in range(4):
+            query_str += chars[random.randint(0, length)]
+        return query_str
+
+    query_id = property(_get_query_id)
 
 
 class School(models.Model):

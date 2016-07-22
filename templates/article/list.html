@@ -1,0 +1,3 @@
+{% for news in news_list %}
+<li>{{ news.title }}-{{ news.author }}-{{ news.content }}-{{ news.get_create_date }}</li>
+{% endfor %}
