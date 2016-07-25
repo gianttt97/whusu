@@ -6,4 +6,4 @@ from .models import School
 
 admin.site.register(Article)
 admin.site.register(Kind)
-admin.site.register(School)
+# admin.site.unregister(School)

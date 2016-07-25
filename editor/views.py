@@ -3,17 +3,15 @@ from django import forms
 from django.http import HttpResponseRedirect
 
 
-class NameFrom(forms.Form):
+class NameForm(forms.Form):
     your_name = forms.CharField(label='Your Name', max_length=100)
 
 
 def login(request):
     if request.method == 'POST':
-        form = NameFrom(request.POST)
+        form = NameForm(request.POST)
         if form.is_valid():
             return HttpResponseRedirect('/thanks/')
     else:
-        form = NameFrom()
+        form = NameForm()
     return render(request, 'login.html', {'form': form})
-
-
