@@ -25,7 +25,50 @@
         </ul>
     </div>
     <div class="spot-wrapper">
-
+{#TODO:SPOTLIGHT-TITLE#}
+        <ul>
+            {% for news in spotlight_list %}
+            <li>
+                <div class="news-item-wrapper">
+                    <img src="{{ news.cover_page_photo_path }}">
+                    <h1 class="news-item-title">{{ news.title }}</h1>
+                    <p class="news-item-inc">{{ news.introduction }}</p>
+                    <h5 class="news-item-info">{{ news.kind.name }} | {{ news.create_time|naturaltime }}</h5>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="notice-wrapper">
+{#TODO:NOTICE-TITLE#}
+        <ul>
+            {% for news in notice_list %}
+            <li>
+                <div class="notice-item-wrapper">
+                    <div class="notice-date-container">
+                        <h6 class="notice-date-day"></h6>
+                        <h3 class="notice-date-month"></h3>
+                    </div>
+                    <h1 class="notice-item-title"></h1>
+                    <p class="notice-item-inc"></p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="school-wrapper">
+{#        TODO:SCHOOL-TITLE#}
+        <ul>
+            {% for news in school_list %}
+            <li>
+                <div class="news-item-wrapper">
+                    <img src="{{ news.cover_page_photo_path }}">
+                    <h1 class="news-item-title">{{ news.title }}</h1>
+                    <p class="news-item-inc">{{ news.introduction }}</p>
+                    <h5 class="news-item-info">{{ news.kind.name }} | {{ news.create_time|naturaltime }}</h5>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>
 
