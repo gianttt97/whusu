@@ -4,12 +4,14 @@ from .models import Article
 
 
 def index(request):
-    head_article = Article.objects.filter(headline='true').order_by('create_time')[:3]
-    spotlight_article = Article.objects.filter(kind__pk='1').order_by('create_time')[:6]
+    head_article = Article.objects.filter(is_headline='true').order_by('create_time')[:3]
+    spotlight_article = Article.objects.filter(kind__pk='1').order_by('create_time')[:4]
     school_article = Article.objects.filter(kind__pk='2').order_by('create_time')[:6]
+    notice_article = Article.objects.filter(kind_pk='3').order_by('create_time')[:4]
     context = {'headline_list': head_article,
                'spotlight_list': spotlight_article,
                'school_list': school_article,
+               'notice_list': notice_article,
                }
     return render(request, 'article/index.html', context)
 

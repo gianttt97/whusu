@@ -18,7 +18,9 @@ class Article(models.Model):
     cover_page_photo_path = models.CharField(max_length=100)
     kind = models.ForeignKey('Kind')
     from_school = models.ForeignKey('editor.School')
-    headline = models.BooleanField(default='false')
+    like_num = models.IntegerField(default=0)
+    view_num = models.IntegerField(default=0)
+    is_headline = models.BooleanField(default='false')
 
     def get_create_date(self):
         return '%s-%s-%s' % (self.create_time.year,
@@ -103,3 +105,22 @@ class Event(models.Model):
                             choices=KIND_CHOICES)
     article = models.ForeignKey('Article')
     user = models.ForeignKey('editor.Editor')
+
+
+class LikeEvent(models.Model):
+    article = models.ForeignKey('Article')
+    user = models.ForeignKey('Editor', default=' ')
+    post_ip = models.CharField(max_length=50)
+    post_time = models.DateTimeField()
+
+
+class Comment(models.Model):
+    article = models.ForeignKey('Article')
+    author = models.ForeignKey('editor.Editor', null='true', blank='true')
+    author_ip = models.CharField(max_length=50)
+    email = models.CharField(max_length=50)
+    create_time = models.DateTimeField()
+    floor = models.IntegerField()
+    like_num = models.IntegerField()
+    anonymous = models.BooleanField()
+    reply_for = models.ForeignKey('Comment')

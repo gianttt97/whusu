@@ -25,7 +25,10 @@
         </ul>
     </div>
     <div class="spot-wrapper">
-{#TODO:SPOTLIGHT-TITLE#}
+        <div class="section-title-wrapper">
+            <div class="section-title-square"></div>
+            <a href="#" class="section-title">热点新闻</a>
+        </div>
         <ul>
             {% for news in spotlight_list %}
             <li>
@@ -40,7 +43,10 @@
         </ul>
     </div>
     <div class="notice-wrapper">
-{#TODO:NOTICE-TITLE#}
+        <div class="section-title-wrapper">
+            <div class="section-title-square"></div>
+            <a href="#" class="section-title">通知公告</a>
+        </div>
         <ul>
             {% for news in notice_list %}
             <li>
@@ -57,7 +63,10 @@
         </ul>
     </div>
     <div class="school-wrapper">
-{#        TODO:SCHOOL-TITLE#}
+        <div class="section-title-wrapper">
+            <div class="section-title-square"></div>
+            <a href="#" class="section-title">院系速递</a>
+        </div>
         <ul>
             {% for news in school_list %}
             <li>
@@ -68,6 +77,7 @@
                     <h5 class="news-item-info">{{ news.kind.name }} | {{ news.create_time|naturaltime }}</h5>
                 </div>
             </li>
+            {%  endfor %}
         </ul>
     </div>
 </div>

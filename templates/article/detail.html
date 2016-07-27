@@ -1,10 +1,22 @@
+{% load humanize %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ news.title }}-武汉大学学生会</title>
 </head>
 <body>
 
-</body>
-</html>
+{% include 'article/header.html' %}
+
+<div class="news-wrapper">
+    <div class="news-kind-title-wrapper">
+        <div class="news-kind-title-square"></div>
+        <h4 class="new-kind-title">首页>热点动态</h4>
+    </div>
+    <h1 class="news-title">{{ news.title }}</h1>
+    <h3 class="news-subhead">{{ news.subhead }}</h3>
+    <h5 class="news-info">发布时间：{{ news.create_time }} 作者：{{ news.author }} 浏览次数：{{ news.view_num }}</h5>
+    <p class="news-content">{{ news.content }}</p>
+    {#TODO:Comment#}
+</div>

@@ -1,3 +1,34 @@
-{% for news in news_list %}
-<li>{{ news.title }}-{{ news.author }}-{{ news.content }}-{{ news.get_create_date }}</li>
-{% endfor %}
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ kind_name }}-武汉大学学生会</title>
+</head>
+<body>
+
+{% include 'article/header.html' %}
+
+<div class="list-name">
+    <div class="list-name-square"></div>
+    <h4 class="list-name">首页-院系</h4>
+</div>
+<div class="news-wrapper">
+    <ul>
+        {% for news in news_list %}
+        <li>
+            <div class="news-item-wrapper">
+                <img src="{{ news.cover_page_photo_path }}">
+                    <h1 class="news-item-title">{{ news.title }}</h1>
+                    <p class="news-item-inc">{{ news.introduction }}</p>
+                    <h5 class="news-item-info">{{ news.create_time|naturaltime }}{{ news.like_num }}</h5>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% include 'article/fooetr.html' %}
+
+</body>
+</html>
