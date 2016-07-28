@@ -7,7 +7,7 @@ def index(request):
     head_article = Article.objects.filter(is_headline='true').order_by('create_time')[:3]
     spotlight_article = Article.objects.filter(kind__pk='1').order_by('create_time')[:4]
     school_article = Article.objects.filter(kind__pk='2').order_by('create_time')[:6]
-    notice_article = Article.objects.filter(kind_pk='3').order_by('create_time')[:4]
+    notice_article = Article.objects.filter(kind__pk='3').order_by('create_time')[:4]
     context = {'headline_list': head_article,
                'spotlight_list': spotlight_article,
                'school_list': school_article,

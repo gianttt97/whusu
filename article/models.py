@@ -109,7 +109,7 @@ class Event(models.Model):
 
 class LikeEvent(models.Model):
     article = models.ForeignKey('Article')
-    user = models.ForeignKey('Editor', default=' ')
+    user = models.ForeignKey('editor.Editor')
     post_ip = models.CharField(max_length=50)
     post_time = models.DateTimeField()
 
@@ -119,6 +119,7 @@ class Comment(models.Model):
     author = models.ForeignKey('editor.Editor', null='true', blank='true')
     author_ip = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
+    content = models.TextField()
     create_time = models.DateTimeField()
     floor = models.IntegerField()
     like_num = models.IntegerField()

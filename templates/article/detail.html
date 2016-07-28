@@ -18,5 +18,16 @@
     <h3 class="news-subhead">{{ news.subhead }}</h3>
     <h5 class="news-info">发布时间：{{ news.create_time }} 作者：{{ news.author }} 浏览次数：{{ news.view_num }}</h5>
     <p class="news-content">{{ news.content }}</p>
-    {#TODO:Comment#}
+    <div class="comment-wrapper">
+        <ul>
+            {% for comment in comment_list %}
+            <div class="comment-item-wrapper">
+                <img src="#" alt="" class="comment-avatar">
+                <h6 class="comment-user">{{ comment.author }}</h6>
+                <p class="comment-content">{{ comment.content }}</p>
+                <h6 class="comment-createtiem">{{ comment.create_time }}</h6>
+            </div>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
